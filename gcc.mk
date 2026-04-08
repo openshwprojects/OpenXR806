@@ -105,6 +105,20 @@ CC_FLAGS += -Wno-error=stringop-truncation -Wno-error=restrict
 # include config header for all c and cpp files
 CC_FLAGS += -include xr_config.h
 
+CXX_FLAGS = $(CPU) -c $(DBG_FLAG) -fno-common -fmessage-length=0 \
+	-fno-exceptions -ffunction-sections -fdata-sections -fomit-frame-pointer \
+	-Wall -Wno-cpp -Wpointer-arith -Wno-error=unused-function \
+	-Wno-unused-variable -Wno-unused-but-set-variable \
+	-Wno-format-truncation	\
+	-MMD -MP $(OPTIMIZE_FLAG)
+
+CXX_FLAGS += -DPLATFORM_XR806=1
+
+CXX_FLAGS += -Wno-error=stringop-truncation -Wno-error=restrict
+
+# include config header for all c and cpp files
+CXX_FLAGS += -include xr_config.h -include climits
+
 LD_FLAGS = $(CPU) -Wl,--gc-sections --specs=nano.specs \
 	-Wl,-Map=$(basename $@).map,--cref
 
@@ -177,6 +191,7 @@ endif
 MBEDTLS_DIR := mbedtls-$(CONFIG_MBEDTLS_VER)
 
 INCLUDE_PATHS += -I$(INCLUDE_ROOT_PATH)/net
+INCLUDE_PATHS += -I$(INCLUDE_ROOT_PATH)/ble
 INCLUDE_PATHS += -I$(INCLUDE_ROOT_PATH)/net/$(LWIP_DIR)
 INCLUDE_PATHS += -I$(INCLUDE_ROOT_PATH)/net/$(MBEDTLS_DIR)
 ifeq ($(CONFIG_LWIP_VER_1_4_1), y)
@@ -234,4 +249,4 @@ PRJ_MAKE_RULES := $(ROOT_PATH)/project/project.mk
 
 %.o: %.cpp
 	@echo "compile_cpp $<"
-	$(Q)$(CPP) $(CC_FLAGS) $(CC_SYMBOLS) -std=gnu++98 -fno-rtti $(INCLUDE_PATHS) -o $@ $<
+	$(Q)$(CPP) $(CXX_FLAGS) $(CC_SYMBOLS) -std=gnu++11 -fno-rtti -fno-exceptions $(INCLUDE_PATHS) -o $@ $<
