@@ -1183,7 +1183,8 @@
  * LWIP_NUM_NETIF_CLIENT_DATA: Number of clients that may store
  * data in client_data member array of struct netif.
  */
-#define LWIP_NUM_NETIF_CLIENT_DATA            0 // ???
+#define LWIP_NUM_NETIF_CLIENT_DATA      1
+#define LWIP_MDNS_RESPONDER             1
 /**
  * @}
  */
