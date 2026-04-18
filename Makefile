@@ -42,6 +42,8 @@ else
 _PROJECT := project/$(CONFIG_PROJECT)
 endif
 
+KCONFIG_DEFCONFIG ?= $(_PROJECT)/gcc/defconfig
+
 PHONY :=
 
 __all: all
@@ -124,11 +126,10 @@ menuconfig: $(MCONF)
 	$< $(Kconfig)
 
 defconfig: $(CONF)
-	@if [ -d project/$(PRJ) ] && [ -f project/$(PRJ)/gcc/defconfig ]; then \
-		cp $(_PROJECT)/gcc/defconfig .config; \
+	@if [ -f "$(KCONFIG_DEFCONFIG)" ]; then \
+		cp "$(KCONFIG_DEFCONFIG)" .config; \
 	fi; \
 	$< --defconfig ./.config $(Kconfig)
-
 config: $(CONF)
 	$< $(Kconfig)
 
