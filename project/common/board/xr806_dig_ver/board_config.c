@@ -196,7 +196,7 @@ static const FlashBoardCfg g_flash_cfg[] = {
 	{
 #if 1
 		.type = FLASH_DRV_FLASHC,
-		.mode = FLASH_READ_QUAD_O_MODE,
+		.mode = FLASH_READ_DUAL_IO_MODE,
 		.clk = (64 * 1000 * 1000),
 #else /* for spi */
 		.type = FLASH_DRV_SPI,
