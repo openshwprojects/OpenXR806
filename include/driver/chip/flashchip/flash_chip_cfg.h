@@ -84,6 +84,8 @@ extern "C" {
 
 #define FLASH_XM25QH64A
 
+#define FLASH_GD25Q16C
+
 #define FLASH_GD25Q256D
 
 #define FLASH_W25Q16JL

@@ -110,6 +110,9 @@ extern FlashChipCtor  P25Q64H_FlashChip;
 #if defined(FLASH_EN25QH16A) || defined(FLASH_EN25QH16B)
 extern FlashChipCtor  EN25QH16X_FlashChip;
 #endif
+#ifdef FLASH_GD25Q16C
+extern FlashChipCtor  GD25Q16C_FlashChip;
+#endif
 #ifdef FLASH_EN25QH64A
 extern FlashChipCtor  EN25QH64A_FlashChip;
 #endif
@@ -147,6 +150,9 @@ FlashChipCtor *flashChipList[] = {
 #endif
 #if defined(FLASH_EN25QH16A) || defined(FLASH_EN25QH16B)
 	&EN25QH16X_FlashChip,
+#endif
+#ifdef FLASH_GD25Q16C
+	&GD25Q16C_FlashChip,
 #endif
 #ifdef FLASH_EN25QH64A
 	&EN25QH64A_FlashChip,
