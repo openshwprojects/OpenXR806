@@ -365,7 +365,7 @@
  * per active UDP "connection".
  * (requires the LWIP_UDP option)
  */
-#define MEMP_NUM_UDP_PCB                10
+#define MEMP_NUM_UDP_PCB                3
 
 /**
  * MEMP_NUM_TCP_PCB: the number of simultaneously active TCP connections.
@@ -377,7 +377,7 @@
  * MEMP_NUM_TCP_PCB_LISTEN: the number of listening TCP connections.
  * (requires the LWIP_TCP option)
  */
-#define MEMP_NUM_TCP_PCB_LISTEN         2
+#define MEMP_NUM_TCP_PCB_LISTEN         4
 
 /**
  * MEMP_NUM_TCP_SEG: the number of simultaneously queued TCP segments.
@@ -920,7 +920,7 @@
 
 /** Set this to 1 to enable querying ".local" names via mDNS
  *  using a One-Shot Multicast DNS Query */
-#define LWIP_DNS_SUPPORT_MDNS_QUERIES  0 // ???
+#define LWIP_DNS_SUPPORT_MDNS_QUERIES  1 // ???
 /**
  * @}
  */
@@ -1305,7 +1305,9 @@
  * LWIP_NUM_NETIF_CLIENT_DATA: Number of clients that may store
  * data in client_data member array of struct netif (max. 256).
  */
-#define LWIP_NUM_NETIF_CLIENT_DATA            0 // ???
+#define LWIP_NUM_NETIF_CLIENT_DATA      1
+#define LWIP_MDNS_RESPONDER             1
+#define MEMP_NUM_SYS_TIMEOUT            LWIP_NUM_SYS_TIMEOUT_INTERNAL + 8
 /**
  * @}
  */

@@ -330,6 +330,25 @@ static const FlashChipCfg simpleFlashChipCfg[] = {
 		.mResume_Latency = 0,
 	},
 #endif
+#ifdef FLASH_GD25Q16C
+	{
+		/* FLASH_GD25Q16C */
+		.mJedec = 0x1540C8,
+		.mSize = 32 * 16 * 0x1000,
+		.mEraseSizeSupport = FLASH_ERASE_64KB | FLASH_ERASE_32KB | FLASH_ERASE_4KB | FLASH_ERASE_CHIP,
+		.mPageProgramSupport = FLASH_PAGEPROGRAM,
+		.mReadStausSupport = FLASH_STATUS1 | FLASH_STATUS2,
+		.mWriteStatusSupport = FLASH_STATUS1 | FLASH_STATUS2,
+		.mReadSupport = FLASH_READ_NORMAL_MODE | FLASH_READ_FAST_MODE | FLASH_READ_DUAL_O_MODE |
+		                FLASH_READ_DUAL_IO_MODE | FLASH_READ_QUAD_O_MODE | FLASH_READ_QUAD_IO_MODE |
+		                FLASH_READ_QPI_MODE,
+		.mMaxFreq = 80 * 1000 * 1000,
+		.mMaxReadFreq = 80 * 1000 * 1000,
+		.mSuspendSupport = 1,
+		.mSuspend_Latency = 30,
+		.mResume_Latency = 200,
+	},
+#endif
 #ifdef FLASH_GD25Q256D
 	{
 		/* FLASH_GD25Q256D */
